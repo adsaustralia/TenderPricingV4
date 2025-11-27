@@ -25,6 +25,5 @@
     "BACKLIT_DURATRAN": 55.0,
     "BRAILLE_SIGNS": 65.0
   },
-  "group_volume_flags": {},
-  "material_overrides": {}
+  "group_volume_flags": {}
 }
