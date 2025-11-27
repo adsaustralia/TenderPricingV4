@@ -536,7 +536,9 @@ if st.session_state["calc_df"] is not None:
     if "group_name_input" not in st.session_state:
         st.session_state["group_name_input"] = ""
 
-    existing_groups = sorted(set(group_assignments.values()) | set(group_prices.keys()))
+    # Work with sets when doing set operations on groups
+    all_groups_set = set(group_assignments.values()) | set(group_prices.keys())
+    existing_groups = sorted(all_groups_set)
     unassigned_materials = [m for m in materials if m not in group_assignments]
 
     with st.form("assign_group_form"):
@@ -597,7 +599,8 @@ if st.session_state["calc_df"] is not None:
 
     st.markdown("**Step 2 – Set group BASE prices (per SQM, AUD) and volume toggle**")
 
-    all_groups = sorted(set(group_assignments.values()) | set(group_prices.keys()))
+    # Use sets for set arithmetic
+    all_groups = set(group_assignments.values()) | set(group_prices.keys())
     used_groups = set(group_assignments.values())
     not_relevant_groups = sorted(all_groups - used_groups)
 
